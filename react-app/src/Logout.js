@@ -11,8 +11,8 @@ class Logout extends Component {
     axios.get('/logout')      
     .then(_ => {
       localStorage.removeItem("username")
-      window.location.reload();
       this.context.router.history.push('/');
+      window.location.reload();
     });
   }
 

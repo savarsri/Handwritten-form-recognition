@@ -61,7 +61,6 @@ class AlchemyEncoder(json.JSONEncoder):
 
 @app.route('/login', methods=['POST'])
 def login():
-    print("56789")
     if request.method == 'POST':
         print(request.get_json())
         password = request.get_json()['password']
@@ -115,6 +114,13 @@ def signup():
             return resp
 
         user.password = hashing.hash_value(password, salt='abcd')
+        user_mongo = {
+            "username": user.username,
+            "emailid": user.emailid,
+            "name": user.name,
+            "password": user.password
+        }
+        users.insert_one(user_mongo)
         sqlsession.add(user)
         sqlsession.commit()
         # Session['user'] = user.username
