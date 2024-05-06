@@ -11,6 +11,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from './axios-object';
+import PersonAdd from '@material-ui/icons/PersonAdd';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 const styles = theme => ({
   main: {
@@ -100,7 +102,7 @@ class Signup extends Component {
       <main className={classes.main}>
       <CssBaseline />
       <Typography variant='display1' align='center' gutterBottom>
-	        Welcome to Document Scanner
+	        Welcome to Form Extractor
       </Typography>
       {this.state.loggedin == null &&
       <Paper className={classes.paper}>
@@ -131,6 +133,8 @@ class Signup extends Component {
             <InputLabel htmlFor="password">Password</InputLabel>
             <Input name="password" type="password" id="password" autoComplete="current-password" value={this.state.password} onChange={this.handlePChange}/>
           </FormControl>
+          <br/>
+          <br/><Typography><Link to={'/login'}><PersonAdd />    Already have an Account? Sign In</Link></Typography><br/>
 
           {this.state.submitted && 
           <div>

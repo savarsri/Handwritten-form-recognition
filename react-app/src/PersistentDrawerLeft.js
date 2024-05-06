@@ -124,7 +124,7 @@ class PersistentDrawerLeft extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Document Scanner
+              Form Extractor
             </Typography>
           </Toolbar>
         </AppBar>

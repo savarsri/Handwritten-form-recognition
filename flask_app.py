@@ -27,6 +27,8 @@ hashing = Hashing(app)
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["pbl2"]
 users = mydb["users"]
+templates = mydb["templates"]
+results = mydb["results"]
 
 DATABASE = './user.db'
 UPLOAD_FOLDER = './react-app/public/templates/'
@@ -217,6 +219,13 @@ def submit_template():
 
     tid = template.id
     sqlsession.commit()
+    template_mongo = {
+        "name": template.name,
+        "description": template.description,
+        "createdon": template.createdon,
+        "userid": template.userid
+    }
+    templates.insert_one(template_mongo)
 
     attr_dict = {'__tablename__' : tid, 'id' : Column('id', Integer, Sequence('user_id_seq'), primary_key=True)} #
 
@@ -325,6 +334,7 @@ def show_marked(tid=None,did=None):
                 json_data.append(pos)
                 break
 
+    results.insert_one(data)
     response = app.response_class(
         response = json.dumps(json_data),
         mimetype='application/json'

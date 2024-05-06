@@ -28,12 +28,12 @@ class App extends Component {
       dict['Signup/Login']='/login';
     }
     else{
-      console.log("ADad");
       dict['Mark Template']='/marktemp';
       dict['Get Data']='/getdata';
       dict['Previous Templates']='/prevtemplates';
-      if(this.state.loggedin==="admin")
+      if(this.state.loggedin==="admin"){
         dict['View Users'] = '/users';
+      }
       dict['Logout']='/logout';
     }
     return (
