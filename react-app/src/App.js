@@ -13,6 +13,15 @@ import PersistentDrawerLeft from './PersistentDrawerLeft';
 import ViewData from './ViewData';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { MuiThemeProvider, createMuiTheme  } from '@material-ui/core/styles';
+
+const theme = createMuiTheme ({
+  palette: {
+    primary: {
+      main: '#808080'
+    }
+  }
+});
 
 class App extends Component {
   constructor() {
@@ -37,6 +46,7 @@ class App extends Component {
       dict['Logout']='/logout';
     }
     return (
+      <MuiThemeProvider theme={theme}>
       <Router>
         <div>
           <PersistentDrawerLeft options={dict} >
@@ -56,6 +66,7 @@ class App extends Component {
           </PersistentDrawerLeft>
         </div>
       </Router>
+      </MuiThemeProvider>
     );
   }
 }

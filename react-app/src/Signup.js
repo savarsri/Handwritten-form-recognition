@@ -106,9 +106,7 @@ class Signup extends Component {
       </Typography>
       {this.state.loggedin == null &&
       <Paper className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <PersonAddOutlined />
-        </Avatar>
+        
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>

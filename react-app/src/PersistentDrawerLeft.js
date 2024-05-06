@@ -25,6 +25,7 @@ const styles = theme => ({
  
   root: {
     display: 'flex',
+    
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {

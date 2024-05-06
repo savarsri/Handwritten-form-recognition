@@ -6,9 +6,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://img.freepik.com/premium-vector/j-asbtract-colorful-sales-background_1113671-179.jpg?w=1380") ;
+  background-size: cover;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a{
+  color:black !important;
+}
+
+.table-info, .table-info>td, .table-info>th {
+  background-color:#d4d4d4 !important;
 }

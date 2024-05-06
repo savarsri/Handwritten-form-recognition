@@ -25,6 +25,7 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
     },
+    
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
@@ -32,6 +33,7 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -103,9 +105,7 @@ class Login extends Component {
       </Typography>
       {this.state.loggedin == null &&
       <Paper className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+      
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
