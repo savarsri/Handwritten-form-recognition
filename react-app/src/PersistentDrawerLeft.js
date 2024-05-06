@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -22,6 +22,7 @@ import MailIcon from '@material-ui/icons/Mail';
 const drawerWidth = 240;
 
 const styles = theme => ({
+ 
   root: {
     display: 'flex',
   },
@@ -33,21 +34,21 @@ const styles = theme => ({
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
+    marginRight: drawerWidth,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
+    marginRight: 12,
+    marginLeft: 'auto',
   },
   hide: {
     display: 'none',
   },
   drawer: {
-    width: drawerWidth,
+    // width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
@@ -62,34 +63,35 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
+    
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    // marginRight: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    marginRight: 0,
   },
 });
 
-class PersistentDrawerLeft extends Component {
+class PersistentDrawerRight extends Component {
   state = {
     open: false,
   };
 
   static contextTypes = {
-    router : PropTypes.object,
-  }
+    router: PropTypes.object,
+  };
 
   handleClick = (link) => {
-    this.context.router.history.push(link)
-  }
+    this.context.router.history.push(link);
+  };
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -107,14 +109,17 @@ class PersistentDrawerLeft extends Component {
 
     return (
       <div className={classes.root}>
-        <CssBaseline>
+        <CssBaseline />
         <AppBar
           position="fixed"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
         >
-          <Toolbar disableGutters={!open}>
+          <Toolbar>
+            <Typography variant="h6" color="inherit" noWrap>
+              Memo Digitalization
+            </Typography>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -123,16 +128,13 @@ class PersistentDrawerLeft extends Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              Form Extractor
-            </Typography>
           </Toolbar>
         </AppBar>
 
         <Drawer
           className={classes.drawer}
           variant="persistent"
-          anchor="left"
+          anchor="right"
           open={open}
           classes={{
             paper: classes.drawerPaper,
@@ -140,20 +142,20 @@ class PersistentDrawerLeft extends Component {
         >
           <div className={classes.drawerHeader}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
             </IconButton>
           </div>
           <Divider />
           <List>
             {Object.keys(vals).map((text, index) => (
-              <ListItem button key={index} onClick ={() => handleClick(vals[text])}>
+              <ListItem button key={index} onClick={() => handleClick(vals[text])}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text}/>
+                <ListItemText primary={text} />
               </ListItem>
             ))}
           </List>
         </Drawer>
-        
+
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open,
@@ -162,15 +164,14 @@ class PersistentDrawerLeft extends Component {
           <div className={classes.drawerHeader} />
           {this.props.children}
         </main>
-        </CssBaseline>
       </div>
     );
   }
 }
 
-PersistentDrawerLeft.propTypes = {
+PersistentDrawerRight.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
+export default withStyles(styles, { withTheme: true })(PersistentDrawerRight);

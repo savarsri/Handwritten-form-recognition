@@ -99,7 +99,7 @@ class Login extends Component {
       <main className={classes.main}>
       <CssBaseline />
       <Typography variant='display1' align='center' gutterBottom>
-	        Welcome to Form Extractor
+	        Welcome to Memo Digitalization
       </Typography>
       {this.state.loggedin == null &&
       <Paper className={classes.paper}>
@@ -121,7 +121,7 @@ class Login extends Component {
             <Input name="password" type="password" id="password" autoComplete="current-password" value={this.state.password} onChange={this.handlePChange}/>
           </FormControl>
           <br/>
-          <br/><Typography><Link to={'/signup'}><PersonAdd />    New to Form Extractor? Sign Up</Link></Typography><br/>
+          <br/><Typography><Link to={'/signup'}><PersonAdd />    New to Memo Digitalization? Sign Up</Link></Typography><br/>
 
           {this.state.submitted && 
           <div>

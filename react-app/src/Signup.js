@@ -102,7 +102,7 @@ class Signup extends Component {
       <main className={classes.main}>
       <CssBaseline />
       <Typography variant='display1' align='center' gutterBottom>
-	        Welcome to Form Extractor
+	        Welcome to Memo Digitalization
       </Typography>
       {this.state.loggedin == null &&
       <Paper className={classes.paper}>
